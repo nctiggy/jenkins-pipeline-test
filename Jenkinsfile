@@ -6,14 +6,15 @@ pipeline {
         TEST_IMAGE = "${env.TEST_PREFIX}:${env.BUILD_NUMBER}"
         TEST_CONTAINER = "${env.TEST_PREFIX}-${env.BUILD_NUMBER}"
         COVERALLS_TOKEN = credentials("coverallsToken")
-
     }
 
     stages {
-        stage("checkout code") {
+        stage("checkout branch") {
             steps {
-                checkout scm
-                sh "git branch --show-current"
+                sh """
+                    branch=`echo "${env.GIT_BRANCH}" | sed 's:.*/::'`
+                    git checkout $branch
+                """
             }
         }
         stage("something on push") {
