@@ -19,5 +19,15 @@ pipeline {
                 sh "printenv"
             }
         }
+        stage("something on tag") {
+            when {
+                buildingTag()
+            }
+            steps {
+                sh "ls -ltra"
+                sh "git rev-parse --abbrev-ref HEAD"
+                sh "printenv"
+            }
+        }
     }
 }
