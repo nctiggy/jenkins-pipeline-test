@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage("something on push") {
             when {
-                branch "refs/remotes/origin/main"
+                branch "origin/main"
             }
             steps {
                 sh "ls -ltra"
