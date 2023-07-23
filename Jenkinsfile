@@ -10,6 +10,9 @@ pipeline {
     }
 
     stages {
+        stage("checkout code") {
+            checkout scm
+        }
         stage("something on push") {
             when {
                 branch "main"
