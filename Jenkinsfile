@@ -13,7 +13,7 @@ pipeline {
         stage("something on push") {
             steps {
                 sh "ls -ltra"
-                sh "git describe"
+                sh "git rev-parse --abbrev-ref HEAD"
                 sh "printenv"
             }
         }
