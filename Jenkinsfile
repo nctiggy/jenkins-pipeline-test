@@ -11,10 +11,10 @@ pipeline {
     }
 
     stages {
-        when {
-            branch "main"
-        }
         stage("something on push") {
+            when {
+                branch "main"
+            }
             steps {
                 sh "ls -ltra"
                 sh "git describe"
