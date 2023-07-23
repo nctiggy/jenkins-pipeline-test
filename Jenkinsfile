@@ -13,11 +13,12 @@ pipeline {
         stage("checkout code") {
             steps {
                 checkout scm
+                sh "git branch --show-current"
             }
         }
         stage("something on push") {
             when {
-                branch "main"
+                branch "origin/main"
             }
             steps {
                 sh "ls -ltra"
