@@ -31,8 +31,8 @@ pipeline {
 
     stages {
         stage("something always do") {
-        container('python') {
             steps {
+            container('python') {
                 sh """
                     ls -ltra
                     git rev-parse --abbrev-ref HEAD
@@ -40,7 +40,7 @@ pipeline {
                     python --version
                 """
             }
-        }
+            }
         }
         stage("something on tag") {
             when {
