@@ -1,7 +1,4 @@
 pipeline {
-    triggers {
-        pollSCM('H/5 * * * *')
-    }
     agent {
       kubernetes {
       yaml '''
