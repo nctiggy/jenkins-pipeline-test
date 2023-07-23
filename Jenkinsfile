@@ -11,7 +11,9 @@ pipeline {
 
     stages {
         stage("checkout code") {
-            checkout scm
+            steps {
+                checkout scm
+            }
         }
         stage("something on push") {
             when {
