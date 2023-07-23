@@ -30,11 +30,14 @@ pipeline {
     }
 
     stages {
-        stage("something on push") {
+        stage("something always do") {
             steps {
-                sh "ls -ltra"
-                sh "git rev-parse --abbrev-ref HEAD"
-                sh "printenv"
+                sh """
+                    ls -ltra"
+                    git rev-parse --abbrev-ref HEAD"
+                    printenv
+                    python --version
+                """
             }
         }
         stage("something on tag") {
