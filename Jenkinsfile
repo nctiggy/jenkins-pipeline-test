@@ -30,6 +30,7 @@ pipeline {
     }
 
     stages {
+        container('python') {
         stage("something always do") {
             steps {
                 sh """
@@ -49,6 +50,7 @@ pipeline {
                 sh "git rev-parse --abbrev-ref HEAD"
                 sh "printenv"
             }
+        }
         }
     }
 }
