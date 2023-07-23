@@ -11,6 +11,9 @@ pipeline {
 
     stages {
         stage("something on push") {
+            when {
+                branch "origin/main"
+            }
             steps {
                 sh "ls -ltra"
                 sh "git rev-parse --abbrev-ref HEAD"
