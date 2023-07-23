@@ -33,8 +33,8 @@ pipeline {
         stage("something always do") {
             steps {
                 sh """
-                    ls -ltra"
-                    git rev-parse --abbrev-ref HEAD"
+                    ls -ltra
+                    git rev-parse --abbrev-ref HEAD
                     printenv
                     python --version
                 """
