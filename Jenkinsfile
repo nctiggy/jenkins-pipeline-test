@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage("something on push") {
             when {
-                branch "origin/main"
+                branch "main"
             }
             steps {
                 sh "ls -ltra"
