@@ -9,17 +9,9 @@ pipeline {
     }
 
     stages {
-        stage("checkout branch") {
-            steps {
-                sh """
-                    branch=`echo "${env.GIT_BRANCH}" | sed 's:.*/::'`
-                    git checkout $branch
-                """
-            }
-        }
         stage("something on push") {
             when {
-                branch "origin/main"
+                branch "main"
             }
             steps {
                 sh "ls -ltra"
