@@ -29,7 +29,7 @@ pipeline {
     stages {
         stage("something always do") {
             when {
-                branch main
+                branch "main"
             }
             steps {
             container('python') {
