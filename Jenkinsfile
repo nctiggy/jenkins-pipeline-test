@@ -44,9 +44,7 @@ pipeline {
                 buildingTag()
             }
             steps {
-                sh "ls -ltra"
-                sh "git rev-parse --abbrev-ref HEAD"
-                sh "printenv"
+                slackSend color: "good", message: "Message from Jenkins Pipeline"
             }
         }
     }
