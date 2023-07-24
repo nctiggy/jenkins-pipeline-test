@@ -28,14 +28,12 @@ pipeline {
 
     stages {
         stage("something always do") {
+            when {
+                branch main
+            }
             steps {
             container('python') {
-                sh """
-                    ls -ltra
-                    git rev-parse --abbrev-ref HEAD
-                    printenv
-                    python --version
-                """
+                slackSend color: "bad", message: "Message from Jenkins Branch"
             }
             }
         }
@@ -44,7 +42,7 @@ pipeline {
                 buildingTag()
             }
             steps {
-                slackSend color: "good", message: "Message from Jenkins Pipeline"
+                slackSend color: "good", message: "Message from Jenkins Tag"
             }
         }
     }
