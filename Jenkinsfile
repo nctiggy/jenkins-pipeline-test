@@ -32,8 +32,23 @@ pipeline {
                 branch "main"
             }
             steps {
-            container('python') {
-                blocks = [
+                slackSend(channel: "#jenkins", blocks: createBlock())
+            }
+        }
+        stage("something on tag") {
+            when {
+                buildingTag()
+            }
+            steps {
+                slackSend color: "good", message: "Message from Jenkins Tag"
+            }
+        }
+    }
+}
+
+def createBlock()
+{
+def blocks = [
 	[
 		"type": "section",
 		"text": [
@@ -57,18 +72,5 @@ pipeline {
 		]
 	]
 ]
-
-slackSend(channel: "#jenkins", blocks: blocks)
-            }
-            }
-        }
-        stage("something on tag") {
-            when {
-                buildingTag()
-            }
-            steps {
-                slackSend color: "good", message: "Message from Jenkins Tag"
-            }
-        }
-    }
+return block
 }
