@@ -32,23 +32,7 @@ pipeline {
                 branch "main"
             }
             steps {
-                slackSend(channel: "#jenkins", blocks: createBlock())
-            }
-        }
-        stage("something on tag") {
-            when {
-                buildingTag()
-            }
-            steps {
-                slackSend color: "good", message: "Message from Jenkins Tag"
-            }
-        }
-    }
-}
-
-def createBlock()
-{
-def blocks = [
+                def blocks = [
 	[
 		"type": "section",
 		"text": [
@@ -72,5 +56,16 @@ def blocks = [
 		]
 	]
 ]
-return block
+                slackSend(channel: "#jenkins", blocks: blocks)
+            }
+        }
+        stage("something on tag") {
+            when {
+                buildingTag()
+            }
+            steps {
+                slackSend color: "good", message: "Message from Jenkins Tag"
+            }
+        }
+    }
 }
